@@ -12,7 +12,7 @@ include 'conexion.php';
 </head>
 <body>
     <header>
-    <nav>
+        <nav>
             <ul class="navbar">
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="clases.php">Clases</a></li>
@@ -22,9 +22,19 @@ include 'conexion.php';
                 <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
             </ul>
         </nav>
-</header>
-<main>
+    </header>
+    <main>
         <h1>Panel de Administración</h1>
+
+        <!-- Mostrar mensajes de error o éxito -->
+        <?php if (isset($_GET['error'])): ?>
+            <p class="error"><?php echo $_GET['error']; ?></p>
+        <?php endif; ?>
+
+        <?php if (isset($_GET['mensaje'])): ?>
+            <p class="mensaje"><?php echo $_GET['mensaje']; ?></p>
+        <?php endif; ?>
+
         <h2>Administrar Alumnos y Evaluaciones</h2>
         <form action="agregar-datos.php" method="POST">
             <label for="nombre">Nombre del Alumno:</label>
@@ -48,9 +58,19 @@ include 'conexion.php';
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "<table><tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>Edad</th><th>Grado</th></tr>";
+            echo "<table><tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>Edad</th><th>Grado</th><th>Opciones</th></tr>";
             while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nombre"] . "</td><td>" . $row["apellido"] . "</td><td>" . $row["edad"] . "</td><td>" . $row["grado"] . "</td></tr>";
+                echo "<tr>
+                        <td>" . $row["id"] . "</td>
+                        <td>" . $row["nombre"] . "</td>
+                        <td>" . $row["apellido"] . "</td>
+                        <td>" . $row["edad"] . "</td>
+                        <td>" . $row["grado"] . "</td>
+                        <td>
+                            <a href='editar-alumno.php?id=" . $row["id"] . "'>Editar</a> | 
+                            <a href='eliminar-alumno.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este alumno?\");'>Eliminar</a>
+                        </td>
+                    </tr>";
             }
             echo "</table>";
         } else {

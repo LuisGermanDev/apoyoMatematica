@@ -440,3 +440,14 @@ button:hover {
     background-position: center;
     background-size: cover;
 }
+.error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.mensaje {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
