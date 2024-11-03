@@ -1,26 +1,21 @@
 <?php
-$host = 'localhost:3307';
-$db = 'unidad_educativa';
-$user = 'root';
-$pass = '';
+include 'conexion.php';
 
-// Conexión a la base de datos
-$conn = new mysqli($host, $user, $pass, $db);
+$materia_id = $_GET['materia_id'];
 
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Consulta para obtener las materias
-$sql = "SELECT id, nombre_materia, descripcion FROM materias";
-$result = $conn->query($sql);
+// Consulta para obtener los temas de la materia seleccionada
+$sql = "SELECT titulo_tema, contenido, imagen_url FROM temas WHERE materia_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $materia_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Clases</title>
+    <title>Temas</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -35,17 +30,20 @@ $result = $conn->query($sql);
     </header>
 
     <main>
-        <h2>Materias Disponibles</h2>
+        <h2>Temas de la Materia Seleccionada</h2>
         <div class="cards-container">
             <?php if ($result->num_rows > 0): ?>
                 <?php while($row = $result->fetch_assoc()): ?>
                     <div class="card">
-                        <h3><a href="temas.php?materia_id=<?php echo $row["id"]; ?>"><?php echo $row["nombre_materia"]; ?></a></h3>
-                        <p><?php echo $row["descripcion"]; ?></p>
+                        <h3><?php echo $row["titulo_tema"]; ?></h3>
+                        <p><?php echo $row["contenido"]; ?></p>
+                        <?php if (!empty($row["imagen_url"])): ?>
+                            <img src="<?php echo $row["imagen_url"]; ?>" alt="Imagen del tema">
+                        <?php endif; ?>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
-                <p>No hay materias disponibles.</p>
+                <p>No hay temas disponibles para esta materia.</p>
             <?php endif; ?>
         </div>
     </main>
