@@ -391,3 +391,43 @@ button:hover {
     color: #fff;
     transform: rotateY(180deg);
 }
+/* Contenedor de las opciones de gestión */
+.admin-options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Estilo de cada caja de gestión */
+.admin-option-card {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.admin-option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Enlace dentro de cada caja */
+.admin-option-card a {
+    text-decoration: none;
+    color: #004aad;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.admin-option-card a:hover {
+    color: #003b8a;
+}
