@@ -56,33 +56,12 @@ include 'conexion.php';
 
         <h2>Lista de Temas</h2>
         
-        <!-- Filtro por Materia -->
-        <form method="GET" action="gestionar-temas.php">
-            <label for="filtro_materia">Filtrar por Materia:</label>
-            <select id="filtro_materia" name="filtro_materia" onchange="this.form.submit()">
-                <option value="">Todas las Materias</option>
-                <?php
-                $sql = "SELECT id, nombre_materia FROM materias";
-                $result = $conn->query($sql);
-                while ($row = $result->fetch_assoc()) {
-                    $selected = (isset($_GET['filtro_materia']) && $_GET['filtro_materia'] == $row['id']) ? 'selected' : '';
-                    echo "<option value='" . $row['id'] . "' $selected>" . $row['nombre_materia'] . "</option>";
-                }
-                ?>
-            </select>
-        </form>
-
         <?php
-        // Obtener temas con filtro de materia si está seleccionado
-        $materia_id = isset($_GET['filtro_materia']) ? $_GET['filtro_materia'] : '';
+        // Consulta para obtener todos los temas sin ningún filtro
         $sql = "SELECT temas.id, temas.titulo_tema, temas.contenido, materias.nombre_materia 
                 FROM temas 
                 JOIN materias ON temas.materia_id = materias.id";
         
-        if ($materia_id) {
-            $sql .= " WHERE temas.materia_id = " . $materia_id;
-        }
-
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
