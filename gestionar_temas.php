@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
@@ -43,7 +43,6 @@ include 'conexion.php';
             <label for="materia_id">Materia:</label>
             <select id="materia_id" name="materia_id" required>
                 <?php
-                // Obtener todas las materias para el select
                 $sql = "SELECT id, nombre_materia FROM materias";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
@@ -54,8 +53,58 @@ include 'conexion.php';
 
             <input type="submit" value="Agregar Tema">
         </form>
-    </main>
 
-    <?php $conn->close(); ?>
+        <h2>Lista de Temas</h2>
+        
+        <!-- Filtro por Materia -->
+        <form method="GET" action="gestionar-temas.php">
+            <label for="filtro_materia">Filtrar por Materia:</label>
+            <select id="filtro_materia" name="filtro_materia" onchange="this.form.submit()">
+                <option value="">Todas las Materias</option>
+                <?php
+                $sql = "SELECT id, nombre_materia FROM materias";
+                $result = $conn->query($sql);
+                while ($row = $result->fetch_assoc()) {
+                    $selected = (isset($_GET['filtro_materia']) && $_GET['filtro_materia'] == $row['id']) ? 'selected' : '';
+                    echo "<option value='" . $row['id'] . "' $selected>" . $row['nombre_materia'] . "</option>";
+                }
+                ?>
+            </select>
+        </form>
+
+        <?php
+        // Obtener temas con filtro de materia si está seleccionado
+        $materia_id = isset($_GET['filtro_materia']) ? $_GET['filtro_materia'] : '';
+        $sql = "SELECT temas.id, temas.titulo_tema, temas.contenido, materias.nombre_materia 
+                FROM temas 
+                JOIN materias ON temas.materia_id = materias.id";
+        
+        if ($materia_id) {
+            $sql .= " WHERE temas.materia_id = " . $materia_id;
+        }
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<table><tr><th>Título del Tema</th><th>Materia</th><th>Contenido</th><th>Acciones</th></tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["titulo_tema"] . "</td>";
+                echo "<td>" . $row["nombre_materia"] . "</td>";
+                echo "<td>" . substr($row["contenido"], 0, 100) . "...</td>"; // Muestra solo las primeras 100 letras del contenido
+                echo "<td>
+                        <a href='editar-tema.php?id=" . $row["id"] . "'>Editar</a> | 
+                        <a href='eliminar-tema.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este tema?\");'>Eliminar</a>
+                      </td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "<p>No hay temas registrados.</p>";
+        }
+
+        $conn->close();
+        ?>
+    </main>
 </body>
 </html>
