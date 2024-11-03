@@ -26,7 +26,7 @@ $result = $stmt->get_result();
             <li><a href="clases.php">Clases</a></li>
             <li><a href="ejercicios.php">Ejecicios</a></li>
             <li><a href="notas.php">Notas</a></li>
-            <li><a href="contact.php">Material de apoyo</a></li>
+            <li><a href="materialDeApoyo.php">Material de apoyo</a></li>
 
 
             <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
