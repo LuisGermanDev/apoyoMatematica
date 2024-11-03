@@ -65,7 +65,7 @@ include 'conexion.php';
                 echo "<td>" . substr($row['ejercicio'], 0, 50) . "...</td>";
                 echo "<td>" . $row['nombre_materia'] . "</td>";
                 echo "<td>
-                        <a href='editar-ejercicio.php?id=" . $row['id'] . "'>Editar</a> | 
+                        <a href='editar-ejercicio.php?id=" . $row['id'] . "'>Editar</a> 
                         <a href='eliminar-ejercicio.php?id=" . $row['id'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este ejercicio?\");'>Eliminar</a>
                       </td>";
                 echo "</tr>";

@@ -76,7 +76,7 @@ include 'conexion.php';
                         <td><?php echo $row['nombre_materia']; ?></td>
                         <td><a href="<?php echo $row['enlace']; ?>" target="_blank">Ver recurso</a></td>
                         <td>
-                            <a href="editar-material.php?id=<?php echo $row['id']; ?>">Editar</a> |
+                            <a href="editar-material.php?id=<?php echo $row['id']; ?>">Editar</a> 
                             <a href="eliminar-material.php?id=<?php echo $row['id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este material?');">Eliminar</a>
                         </td>
                     </tr>

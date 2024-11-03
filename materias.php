@@ -59,7 +59,7 @@ include 'conexion.php';
             echo "<table><tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Acciones</th></tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nombre_materia"] . "</td><td>" . $row["descripcion"] . "</td>";
-                echo "<td><a href='editar-materia.php?id=" . $row["id"] . "'>Editar</a> | <a href='eliminar-materia.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar esta materia?\");'>Eliminar</a></td></tr>";
+                echo "<td><a href='editar-materia.php?id=" . $row["id"] . "'>Editar</a>  <a href='eliminar-materia.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar esta materia?\");'>Eliminar</a></td></tr>";
             }
             echo "</table>";
         } else {

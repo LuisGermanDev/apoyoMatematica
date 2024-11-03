@@ -53,7 +53,7 @@ include 'conexion.php';
             echo "<table><tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>Especialidad</th><th>Acciones</th></tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nombre"] . "</td><td>" . $row["apellido"] . "</td><td>" . $row["especialidad"] . "</td>";
-                echo "<td><a href='editar-profesor.php?id=" . $row["id"] . "'>Editar</a> | <a href='eliminar-profesor.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este profesor?\");'>Eliminar</a></td></tr>";
+                echo "<td><a href='editar-profesor.php?id=" . $row["id"] . "'>Editar</a>  <a href='eliminar-profesor.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este profesor?\");'>Eliminar</a></td></tr>";
             }
             echo "</table>";
         } else {

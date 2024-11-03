@@ -65,7 +65,7 @@ include 'conexion.php';
                         <td>" . $row["nota"] . "</td>
                         <td>" . $row["fecha"] . "</td>
                         <td>
-                            <a href='editar-evaluacion.php?id=" . $row["id"] . "'>Editar</a> | 
+                            <a href='editar-evaluacion.php?id=" . $row["id"] . "'>Editar</a> 
                             <a href='eliminar-evaluacion.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar esta evaluación?\");'>Eliminar</a>
                         </td>
                     </tr>";
