@@ -17,9 +17,21 @@ include 'conexion.php';
 </head>
 <body>
     <header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="clases.php">Clases</a></li>
+            <li><a href="ejercicios.php">Ejecicios</a></li>
+            <li><a href="notas.php">Notas</a></li>
+            <li><a href="contact.php">Material de apoyo</a></li>
+
+
+            <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
+        </ul>
+    </nav>
+        </header>
+        <main>
         <h1>Gestionar Profesores</h1>
-    </header>
-    <main>
         <h2>Agregar Nuevo Profesor</h2>
         <form action="agregar-profesor.php" method="POST">
             <label for="nombre">Nombre del Profesor:</label>

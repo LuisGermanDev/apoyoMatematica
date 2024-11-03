@@ -31,11 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
        
-        <nav>
+    <nav>
         <ul class="navbar">
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="about.php">Acerca de</a></li>
-            <li><a href="contact.php">Contacto</a></li>
+            <li><a href="clases.php">Clases</a></li>
+            <li><a href="ejercicios.php">Ejecicios</a></li>
+            <li><a href="notas.php">Notas</a></li>
+            <li><a href="contact.php">Material de apoyo</a></li>
+
+
             <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
         </ul>
     </nav>

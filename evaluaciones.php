@@ -17,9 +17,21 @@ include 'conexion.php';
 </head>
 <body>
     <header>
-        <h1>Gestionar Evaluaciones</h1>
-    </header>
-    <main>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="clases.php">Clases</a></li>
+            <li><a href="ejercicios.php">Ejecicios</a></li>
+            <li><a href="notas.php">Notas</a></li>
+            <li><a href="contact.php">Material de apoyo</a></li>
+
+
+            <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
+        </ul>
+    </nav>
+        </header>
+        <main>
+            <h1>Gestionar Evaluaciones</h1>
         <h2>Registrar Nueva Evaluación</h2>
         <form action="agregar-evaluacion.php" method="POST">
             <label for="id_alumno">ID del Alumno:</label>
