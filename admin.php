@@ -50,7 +50,7 @@ if (!isset($_SESSION['admin'])) {
             </p>
         </section>
       
-        <section class="categories">
+        <!-- <section class="categories">
             <h2>Categorías de Matemáticas</h2>
             <div class="category">
                 <h3>Clases</h3>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['admin'])) {
                     <li>Cálculo: Soluciones a problemas avanzados</li>
                 </ul>
             </div>
-        </section>
+        </section> -->
     </main>
     <footer>
         <p>© 2024 Unidad Educativa Juancito Pinto</p>
