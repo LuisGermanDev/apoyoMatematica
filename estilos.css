@@ -230,3 +230,48 @@ button:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+/* temas */
+/* Estilos para el contenedor de temas */
+.temas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Estilos para cada tarjeta de tema */
+.tema-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 95%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: justify;
+}
+
+.tema-card h3 {
+    color: #004aad;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.tema-card p {
+    color: #333;
+    font-size: 14px;
+    text-align: justify;
+}
+
+/* Ajuste de imagen en cada tema */
+.tema-card img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Efecto de hover para las tarjetas de tema */
+.tema-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

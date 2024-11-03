@@ -25,8 +25,8 @@ include 'conexion.php';
             <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
         </ul>
     </nav>
-</header>
-<main>
+    </header>
+    <main>
         <h1>Gestionar Materias</h1>
         <h2>Agregar Nueva Materia</h2>
         <form action="agregar-materia.php" method="POST">
@@ -45,9 +45,10 @@ include 'conexion.php';
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "<table><tr><th>ID</th><th>Nombre</th><th>Descripción</th></tr>";
+            echo "<table><tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Acciones</th></tr>";
             while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nombre_materia"] . "</td><td>" . $row["descripcion"] . "</td></tr>";
+                echo "<tr><td>" . $row["id"] . "</td><td>" . $row["nombre_materia"] . "</td><td>" . $row["descripcion"] . "</td>";
+                echo "<td><a href='editar-materia.php?id=" . $row["id"] . "'>Editar</a> | <a href='eliminar-materia.php?id=" . $row["id"] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar esta materia?\");'>Eliminar</a></td></tr>";
             }
             echo "</table>";
         } else {

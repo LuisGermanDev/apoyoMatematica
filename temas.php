@@ -31,10 +31,10 @@ $result = $stmt->get_result();
 
     <main>
         <h2>Temas de la Materia Seleccionada</h2>
-        <div class="cards-container">
+        <div class="temas-container">
             <?php if ($result->num_rows > 0): ?>
                 <?php while($row = $result->fetch_assoc()): ?>
-                    <div class="card">
+                    <div class="tema-card">
                         <h3><?php echo $row["titulo_tema"]; ?></h3>
                         <p><?php echo $row["contenido"]; ?></p>
                         <?php if (!empty($row["imagen_url"])): ?>
