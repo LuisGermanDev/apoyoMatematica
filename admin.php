@@ -24,6 +24,8 @@ if (!isset($_SESSION['admin'])) {
         <ul>
             <li><a href="alumno.php">Gestionar alumnos</a></li>
             <li><a href="evaluaciones.php">Gestionar Evaluaciones</a></li>
+            <li><a href="materias.php">Gestionar Materias</a></li>
+            <li><a href="profesores.php">Gestionar Profesores</a></li>
             <li><a href="logout.php">Cerrar Sesión</a></li>
         </ul>
         <section class="intro">

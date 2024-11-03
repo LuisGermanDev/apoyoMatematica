@@ -17,9 +17,17 @@ include 'conexion.php';
 </head>
 <body>
     <header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="about.php">Acerca de</a></li>
+            <li><a href="contact.php">Contacto</a></li>
+            <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
         <h1>Gestionar Materias</h1>
-    </header>
-    <main>
         <h2>Agregar Nueva Materia</h2>
         <form action="agregar-materia.php" method="POST">
             <label for="nombre_materia">Nombre de la Materia:</label>

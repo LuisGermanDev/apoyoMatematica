@@ -30,10 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <header>
-        <h1>Iniciar Sesión - Administrador</h1>
+       
+        <nav>
+        <ul class="navbar">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="about.php">Acerca de</a></li>
+            <li><a href="contact.php">Contacto</a></li>
+            <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
+        </ul>
+    </nav>
     </header>
     <main>
         <form action="login.php" method="POST">
+        <h1>Iniciar Sesión - Administrador</h1>
             <label for="usuario">Usuario:</label>
             <input type="text" id="usuario" name="usuario" required>
             
@@ -42,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <input type="submit" value="Iniciar Sesión">
         </form>
+        
     </main>
 </body>
 </html>
