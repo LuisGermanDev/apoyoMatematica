@@ -12,9 +12,18 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM materias WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
-    $stmt->execute();
+
+    try {
+        $stmt->execute();
+        // Redirigir con un mensaje de éxito
+        header("Location: materias.php?mensaje=Materia eliminada correctamente");
+    } catch (mysqli_sql_exception $e) {
+        // Si ocurre un error (por ejemplo, restricción de clave foránea)
+        header("Location: materias.php?error=No se puede eliminar esta materia porque tiene registros asociados.");
+    }
 }
 
-header("Location: gestionar-materias.php");
+$stmt->close();
+$conn->close();
 exit;
 ?>

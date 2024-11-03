@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-<header>
+<div class="fondoHome">
+     <header>
 <nav>
             <ul class="navbar">
                 <li><a href="index.php">Inicio</a></li>
@@ -27,6 +28,9 @@
         
 
     </main>
+</div>
+
+
     <footer>
         <p>© 2024 Unidad Educativa Juancito Pinto</p>
     </footer>

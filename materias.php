@@ -28,8 +28,17 @@ include 'conexion.php';
             </ul>
         </nav>
     </header>
+
     <main>
         <h1>Gestionar Materias</h1>
+        
+        <!-- Mensajes de éxito o error -->
+        <?php if (isset($_GET['mensaje'])): ?>
+            <p style="color: green;"><?php echo $_GET['mensaje']; ?></p>
+        <?php elseif (isset($_GET['error'])): ?>
+            <p style="color: red;"><?php echo $_GET['error']; ?></p>
+        <?php endif; ?>
+
         <h2>Agregar Nueva Materia</h2>
         <form action="agregar-materia.php" method="POST">
             <label for="nombre_materia">Nombre de la Materia:</label>
