@@ -1,24 +1,10 @@
 <?php
 include 'conexion.php';
 
-// Consulta para obtener los tres mejores alumnos por cada materia
-$sql = "
-SELECT * FROM (
-    SELECT 
-        evaluaciones.nota,
-        evaluaciones.fecha,
-        alumnos.nombre AS nombre_alumno,
-        alumnos.apellido AS apellido_alumno,
-        materias.nombre_materia,
-        ROW_NUMBER() OVER (PARTITION BY materias.id ORDER BY evaluaciones.nota DESC) AS ranking
-    FROM evaluaciones
-    JOIN alumnos ON evaluaciones.id_alumno = alumnos.id
-    JOIN materias ON evaluaciones.id_materia = materias.id
-) AS ranked
-WHERE ranking <= 3
-ORDER BY nombre_materia, ranking;
-";
-
+// Consulta para obtener el material de apoyo junto con el nombre de la materia
+$sql = "SELECT material_apoyo.titulo, material_apoyo.enlace, materias.nombre_materia 
+        FROM material_apoyo
+        JOIN materias ON material_apoyo.materia_id = materias.id";
 $result = $conn->query($sql);
 ?>
 
@@ -26,12 +12,12 @@ $result = $conn->query($sql);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Notas - Unidad Educativa Juancito Pinto</title>
+    <title>Material de Apoyo - Unidad Educativa Juancito Pinto</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <header>
-        <nav>
+    <nav>
             <ul class="navbar">
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="clases.php">Clases</a></li>
@@ -44,28 +30,25 @@ $result = $conn->query($sql);
     </header>
 
     <main>
-        <h1>Evaluaciones y Notas</h1>
-        <h2>Mejores Evaluaciones por Materia</h2>
+        <h1>Material de Apoyo</h1>
         
         <?php if ($result->num_rows > 0): ?>
             <table>
                 <tr>
-                    <th>Alumno</th>
+                    <th>Título</th>
                     <th>Materia</th>
-                    <th>Nota</th>
-                    <th>Fecha</th>
+                    <th>Enlace</th>
                 </tr>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['nombre_alumno'] . " " . $row['apellido_alumno']; ?></td>
+                        <td><?php echo $row['titulo']; ?></td>
                         <td><?php echo $row['nombre_materia']; ?></td>
-                        <td><?php echo $row['nota']; ?></td>
-                        <td><?php echo $row['fecha']; ?></td>
+                        <td><a href="<?php echo $row['enlace']; ?>" target="_blank">Ver recurso</a></td>
                     </tr>
                 <?php endwhile; ?>
             </table>
         <?php else: ?>
-            <p>No hay evaluaciones registradas.</p>
+            <p>No hay material de apoyo disponible.</p>
         <?php endif; ?>
 
     </main>

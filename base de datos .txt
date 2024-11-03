@@ -59,3 +59,10 @@ CREATE TABLE ejercicios (
     materia_id INT,
     FOREIGN KEY (materia_id) REFERENCES materias(id)
 );
+CREATE TABLE material_apoyo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    enlace VARCHAR(255) NOT NULL,
+    materia_id INT,
+    FOREIGN KEY (materia_id) REFERENCES materias(id)
+);

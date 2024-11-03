@@ -23,7 +23,7 @@ if (!isset($_SESSION['admin'])) {
             <li><a href="clases.php">Clases</a></li>
             <li><a href="ejercicios.php">Ejecicios</a></li>
             <li><a href="notas.php">Notas</a></li>
-            <li><a href="contact.php">Material de apoyo</a></li>
+            <li><a href="gestionar_material.php">Material de apoyo</a></li>
 
 
             <li class="admin-panel"><a href="admin.php">Panel de Administración</a></li>
@@ -40,6 +40,8 @@ if (!isset($_SESSION['admin'])) {
             <li><a href="profesores.php">Gestionar Profesores</a></li>
             <li><a href="gestionar_temas.php">Gestionar temas</a></li>
             <li><a href="gestionar_ejercicios.php">Gestionar Ejercicios</a></li>
+            <li><a href="gestionar_material.php">Gestionar material de apoyo</a></li>
+
             <li><a href="logout.php">Cerrar Sesión</a></li>
         </ul>
         <section class="intro">
