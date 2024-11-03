@@ -17,7 +17,8 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssi", $titulo_tema, $contenido, $imagen_url, $materia_id);
 
 if ($stmt->execute()) {
-    echo "Tema agregado exitosamente.";
+    header("Location: gestionar_temas.php?mensaje=gestionar_temas_agregado");
+
 } else {
     echo "Error al agregar el tema: " . $conn->error;
 }

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO evaluaciones (id_alumno, id_materia, nota, fecha) VALUES ('$id_alumno', '$id_materia', '$nota', '$fecha')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Evaluación registrada correctamente";
+        header("Location: evaluaciones.php?mensaje=evaluacion_agregado");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

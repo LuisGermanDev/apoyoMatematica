@@ -8,7 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO materias (nombre_materia, descripcion) VALUES ('$nombre_materia', '$descripcion')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Materia agregada correctamente";
+        header("Location: materias.php?mensaje=materias_agregado");
+
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

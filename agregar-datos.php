@@ -10,7 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO alumnos (nombre, apellido, edad, grado) VALUES ('$nombre', '$apellido', '$edad', '$grado')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Alumno agregado correctamente";
+        header("Location: alumno.php?mensaje=alumno_agregado");
+
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
