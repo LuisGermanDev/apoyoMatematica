@@ -1,0 +1,45 @@
+CREATE DATABASE unidad_educativa;
+
+USE unidad_educativa;
+
+-- Tabla para alumnos
+CREATE TABLE alumnos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    edad INT NOT NULL,
+    grado VARCHAR(50)
+);
+
+-- Tabla para profesores
+CREATE TABLE profesores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    especialidad VARCHAR(100)
+);
+
+-- Tabla para materias
+CREATE TABLE materias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_materia VARCHAR(100) NOT NULL,
+    descripcion TEXT
+);
+
+-- Tabla para evaluaciones
+CREATE TABLE evaluaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_alumno INT,
+    id_materia INT,
+    nota DECIMAL(5,2),
+    fecha DATE,
+    FOREIGN KEY (id_alumno) REFERENCES alumnos(id),
+    FOREIGN KEY (id_materia) REFERENCES materias(id)
+);
+
+-- Tabla para administradores
+CREATE TABLE administradores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(100) NOT NULL
+);
