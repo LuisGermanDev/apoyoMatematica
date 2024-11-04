@@ -31,22 +31,19 @@ $result = $stmt->get_result();
     </header>
 
     <main>
-        <h1>Ejercicios</h1>
-        <div class="ejercicios-container">
-            <?php while ($row = $result->fetch_assoc()): ?>
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <p><?php echo $row['ejercicio']; ?></p>
-                        </div>
-                        <div class="flip-card-back">
-                            <p>Respuesta: <?php echo $row['respuesta']; ?></p>
-                        </div>
-                    </div>
+    <h1>Ejercicios</h1>
+    <div class="ejercicios-container">
+        <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="ejercicio">
+                <p><?php echo $row['ejercicio']; ?></p>
+                <div class="respuesta">
+                    <p>Respuesta: <?php echo $row['respuesta']; ?></p>
                 </div>
-            <?php endwhile; ?>
-        </div>
-    </main>
+            </div>
+        <?php endwhile; ?>
+    </div>
+</main>
+
 </body>
 </html>
 

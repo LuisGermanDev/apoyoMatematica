@@ -334,65 +334,35 @@ button:hover {
 }
 
 /* Tarjeta de ejercicio en estilo de fila */
-.flip-card {
-    background-color: transparent;
-    width: 80%;
-    max-width: 600px;
-    height: 150px;
-    perspective: 1000px;
-    margin: 10px 0;
-}
-
-/* Contenedor interno de la tarjeta */
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    border: 1px solid #ccc; /* Borde similar al de las materias */
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Efecto de volteo al pasar el mouse */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa al voltear */
-}
-
-/* Parte frontal y posterior de la tarjeta */
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-/* Estilo para la parte frontal */
-.flip-card-front {
+.ejercicio {
     background-color: #f5f5f5;
     color: #333;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    margin: 10px 0;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
 }
 
-/* Estilo para la parte trasera */
-.flip-card-back {
+.respuesta {
+    display: none;
     background-color: #007bff;
     color: #fff;
-    transform: rotateY(180deg);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: normal;
 }
+
+.ejercicio:hover .respuesta {
+    display: block;
+}
+
+
 /* Contenedor de las opciones de gestión */
 .admin-options-list {
     display: flex;
